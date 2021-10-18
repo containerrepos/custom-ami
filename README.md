@@ -5,37 +5,14 @@ Packer is used to build Custom Amazon Machine Images
 Execution Flow
 ===========================
 
-step 1: clone repo
-
-$git clone https://github.com/cloudstones/docker-packer.git
+$git clone https://github.com/containerrepos/custom-ami.git
 
 
 step 2: enter src directory
 
-$cd docker-packer/src
+$cd custom-ami
 
 
-step 3: enter access key and secret key
+$ docker image build -t mycustomami .
 
-$vi variables.json
-
-{
-
-    "aws_access_key": "",
-    
-    "aws_secret_key": "",
-    
-    "region": "us-east-1"
-    
-  }
-
-
-Step 4: validate syntax
-
-$packer validate -var-file=variables.json builders.json
-
-
-Step 5: Build custome AMI
-
-$packer build -var-file=variables.json builders.json
-
+$docker run -it -e AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} -e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} -e AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION} mycustomami
