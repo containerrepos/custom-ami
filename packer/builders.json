@@ -11,19 +11,19 @@
 }],
 "provisioners":[
 {
-"type":"file",
-"source":"/home/centos/docker-packer/src/ansible.repo",
-"destination":"/home/centos/ansible.repo"
+"type": "shell",
+"script": "scripts/ansible.sh"
 },
 {
 "type": "shell",
-"script": "/home/centos/docker-packer/src/bash-scripts/hardening.sh"
+"inline": ["yum clean all"]
 },
 {
 "type": "ansible-local",
-"playbook_file":"/home/centos/docker-packer/src/ansible-playbooks/plays/myplay.yml",
+"playbook_file":"ansible/site.yml",
 "role_paths": [
-"/home/centos/docker-packer/src/ansible-playbooks/roles/myrole"
+"ansible/roles/cssp_basics",
+"ansible/roles/cleanup"
 ]
 
 }
