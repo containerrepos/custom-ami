@@ -10,6 +10,10 @@ $git clone https://github.com/containerrepos/custom-ami.git
 
 step 2: enter src directory
 
+vi custom-ami/packer/builders.json
+
+"source_ami": "BASEAMI-ID",
+
 $cd custom-ami
 
 
